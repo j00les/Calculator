@@ -11,7 +11,7 @@
 
 .calculator {
     margin: 100px auto;
-    width: 500px;
+    width: fit-content;
     padding: 20px;
     border: solid;
     
@@ -19,11 +19,21 @@
 
 .btn-container{
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
+    gap: 20px;
+}
+
+.btn-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-top: 10px;
 }
 
 .btn {
     padding: 20px;
+    width: 60px;
+    font-size: 20px;
 }
 
 
