@@ -1,0 +1,32 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+.display {
+    border: solid;
+    padding: 50px;
+}
+
+.calculator {
+    margin: 100px auto;
+    width: 500px;
+    padding: 20px;
+    border: solid;
+    
+}
+
+.btn-container{
+    display: flex;
+    justify-content: space-around;
+}
+
+.btn {
+    padding: 20px;
+}
+
+
+
+
+
