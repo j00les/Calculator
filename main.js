@@ -1,6 +1,6 @@
-const display  = document.querySelector('.display')
 
-//Operator functions
+
+// Operator functions
 const add = (a, b) => a + b
 const subtract = (a, b) => a - b
 const multiply = (a, b) => a * b
@@ -16,11 +16,12 @@ const operate = (operator, num1, num2) => {
    } else if (operator === '-') {
       return subtract(num1, num2)
    
-   } else if (operator === 'x') {
+   } else if (operator === '*') {
       return multiply(num1, num2)
    
    }else if (operator === '/')  {
-      if (b === 0) return null
+      if (num2 === 0) return null
       return divide(num1, num2)
    };
 };
+
