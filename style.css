@@ -14,7 +14,7 @@ body {
     padding: 10px 25px 10px 40px;
     height: 130px;
     background-color: #89c2d9;
-    font-size: 30px;
+    font-size: 40px;
     display: flex;
     justify-content: space-evenly;
     flex-direction: column;
@@ -27,7 +27,7 @@ body {
 }
 
 .top-display {
-    font-size: 16px;
+    font-size: 20px;
     height: 20px;
 }
 
@@ -65,7 +65,7 @@ body {
     color: #0d1b2a;
     padding: 20px;
     width: 80px;
-    font-size: 20px;
+    font-size: 27px;
     font-weight: bold;
     border: 2px solid;
     border-radius: 10px;
