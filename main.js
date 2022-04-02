@@ -24,8 +24,8 @@ const divide = (a, b) => a / b;
 
 
 const operate = (operator, num1, num2) => {
-   num1 = Number(num1)
-   num2 = Number(num2)
+   num1 = Number(num1);
+   num2 = Number(num2);
    
    if (operator === '+') {
       return add(num1, num2)
@@ -40,7 +40,6 @@ const operate = (operator, num1, num2) => {
       if (num2 === 0) return null
       return divide(num1, num2)
    };
-
 };
 
 
@@ -62,7 +61,7 @@ function addOperator(operator) {
 
 function clear() {
    currentDisplay.textContent = '0';
-   topDisplay.textContent = '';
+   topDisplay.textContent = 'anjinx';
    firstOperand = '';
    lastOperand = '';
    currentOperator = null;
@@ -79,10 +78,8 @@ function resetScreen() {
 
 function keyboardPress(e) {
    if (e.key >= 0 && e.key <= 9) addOperand(e.key) 
-   if (e.key === '+' || e.key === '-' || e.key === '*' || e.key === '/') setOperator(convertOperator(e.key))
+   if (e.key === '+' || e.key === '-' || e.key === '*' || e.key === '/') addOperator(convertOperator(e.key))
 }
-
-
 
 
 
