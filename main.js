@@ -44,14 +44,20 @@ const operate = (operator, num1, num2) => {
 };
 
 
-function addOperator(operator) {
-   currentDisplay.textContent += operandButtons.textContent
-}
-
-
 function addOperand(operand) {
    currentDisplay.textContent += operand
+   if(currentDisplay.textContent === '0' || doResetScreen) resetScreen()
+};
+
+
+function addOperator(operator) {
+   if (currentOperator !== null) evalNumber()
+   firstOperand = currentDisplay.textContent
+   currentOperator = operator
+   topDisplay.textContent = `${firstOperand} ${currentOperator}`
+   resetScreen = true
 }
+
 
 
 function clear() {
@@ -63,11 +69,12 @@ function clear() {
 
 };
 
-function ResetScreen() {
-   currentDisplay.textContent = ''; 
-   doResetScreen = true
 
-}
+function resetScreen() {
+   currentDisplay.textContent = ''; 
+   doResetScreen = false;
+
+};
 
 
 function keyboardPress(e) {
@@ -76,13 +83,6 @@ function keyboardPress(e) {
 }
 
 
-function setOperator(operator) {
-   if (currentOperator !== null) evalNumber()
-   firstOperand = currentDisplay.textContent
-   currentOperator = operator
-   topDisplay.textContent = `${firstOperand} ${currentOperator}`
-   resetScreen = true
-}
 
 
 
