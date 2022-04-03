@@ -1,14 +1,18 @@
-const topDisplay = document.querySelector('.top-display')
+const topDisplay = document.querySelector('.top-display');
 const currentDisplay = document.querySelector('.current-display');
 const operandButtons = document.querySelectorAll('.operand');
 const operatorButtons = document.querySelectorAll('.operator');
-const clearBtn = document.querySelector('.cBtn')
+const clearBtn = document.querySelector('.cBtn');
+const equalBtn = document.querySelector('.equalBtn');
+const allClearBtn = document.querySelector('.allClearBtn');
 
-let firstOperand = ''
-let secondOperand = ''
-let doResetScreen = false
-let currentOperator = null
+let firstOperand = '';
+let secondOperand = '';
+let doResetScreen = false;
+let currentOperator = null;
 
+allClearBtn.addEventListener('click', allClear )
+equalBtn.addEventListener('click', evalNumber)
 clearBtn.addEventListener('click', clear)
 window.addEventListener('keydown', keyboardPress)
 
@@ -26,7 +30,7 @@ function addOperand(operand) {
    currentDisplay.textContent += operand
    if (currentDisplay.textContent === '0' || doResetScreen)
       resetScreen()
-};
+}
 
 function addOperator(operator) {
    if (currentOperator !== null) evalNumber()
@@ -36,6 +40,11 @@ function addOperator(operator) {
    resetScreen = true
 }
 
+function allClear() {
+   currentDisplay.textContent = currentDisplay.textContent.toString().slice(0, -1)
+}
+
+
 function clear() {
    currentDisplay.textContent = '0';
    topDisplay.textContent = 'anjinx';
@@ -43,13 +52,13 @@ function clear() {
    lastOperand = '';
    currentOperator = null;
 
-};
+}
 
 function resetScreen() {
    currentDisplay.textContent = '';
    doResetScreen = false;
 
-};
+}
 
 function keyboardPress(e) {
    if (e.key >= 0 && e.key <= 9) addOperand(e.key)
@@ -97,8 +106,8 @@ function operate(operator, num1, num2) {
    } else if (operator === '/') {
       if (num2 === 0) return null
       return divide(num1, num2)
-   };
-};
+   }
+}
 
 
 
