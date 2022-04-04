@@ -81,8 +81,8 @@ body {
 
 }
 
-.clearBtn, .allClearBtn {
-    width: 170px;
+.clearBtn {
+    width: 350px;
     padding: 10px;
     font-size: 20px;
     text-transform: uppercase;
@@ -91,8 +91,6 @@ body {
     border: solid 2px #222222;
     text-decoration: none;
     border-radius: 5px;
-}
-
-.cBtn {
-    background-color: #bc4b51;
+    background-color: #9d5c63;
+    cursor: pointer;
 }
