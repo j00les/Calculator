@@ -6,12 +6,13 @@ const currentDisplay = document.querySelector('.current-display');
 const topDisplay = document.querySelector('.top-display');
 
 const equalBtn = document.querySelector('.equalBtn');
-const decimalBtn = document.querySelector('.decimalBtn')
-const clearBtn = document.querySelector('.clearBtn')
-const numberBtn = document.querySelectorAll('.operand')
-const operatorBtn = document.querySelectorAll('.operator')
+const decimalBtn = document.querySelector('.decimalBtn');
+const clearBtn = document.querySelector('.clearBtn');
+const numberBtn = document.querySelectorAll('.operand');
+const operatorBtn = document.querySelectorAll('.operator');
 
 equalBtn.addEventListener('click', operate)
+// clearBtn.addEventListener('click', )
 
 numberBtn.forEach(button => {
    button.addEventListener('click', (e) => {
@@ -38,9 +39,7 @@ function handleOperator(op) {
    topDisplay.textContent = `${previousNumber} ${operator} `
    currentNumber = ''
    currentDisplay.textContent = ''
-
 }
-
 
 function operate() {
    previousNumber = Number(previousNumber); // Convert value to number
@@ -57,16 +56,27 @@ function operate() {
       previousNumber = subtract(previousNumber, currentNumber)
    } else if (operator === 'x') {
       previousNumber = multiply(currentNumber, previousNumber)
-   } else if (operator === '/' ) {
-      if (currentNumber === 0) {
-         previousNumber = 'ya' 
-      }
+   } else if (operator === '/') {
       previousNumber = divide(previousNumber, currentNumber)
-      
+      if (currentNumber <= 0) {
+         displayResult()
+      }
    }
-   previousNumber.toString()
-   currentDisplay.textContent = previousNumber
-   topDisplay.textContent += `${currentNumber}`
-
+   topDisplay.textContent += currentNumber
+   previousNumber = previousNumber.toString()
+   alterResult()
 }
 
+function displayResult() {
+   previousNumber = 'Error!'
+   topDisplay.textContent = ''
+   currentNumber = ''
+}
+
+function alterResult() {
+   if (previousNumber.length <= 11) {
+      currentDisplay.textContent = previousNumber
+   } else {
+      currentDisplay.textContent = `${previousNumber.slice(0, 11)}`
+   }
+}
