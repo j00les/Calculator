@@ -1,4 +1,3 @@
-// currentDisplay.textContent = currentDisplay.textContent.slice(0, -1)
 let currentNumber = '';
 let previousNumber = '';
 let operator = '';
@@ -15,18 +14,25 @@ const operatorBtn = document.querySelectorAll('.operator');
 
 window.addEventListener('keydown', (e) => {
    if (e.key >= 0) handleNumber(e.key)
-   if (e.key === '+' || e.key === '-' ||
-       e.key === '/' || e.key === '*') {
+   if (e.key === '+' || e.key === '-' ||e.key === '/') {
       handleOperator(e.key)
    }
+   if (e.key === '*') handleOperator(convertMultiply(e.key))
+
    if (e.key === 'Enter') {
       if (previousNumber.length === 0 || currentNumber.length === 0) {
          currentDisplay.textContent = NaN
       } else {
          operate()
       }
-   } 
+   }
+   if (e.key === 'Backspace') handleDeleteKey()
 })
+
+
+function handleDeleteKey() {
+   currentDisplay.textContent = currentDisplay.textContent.slice(0, -1)
+}
 
 equalBtn.addEventListener('click', () => {
    if (currentNumber.length === 0 || previousNumber.length === 0) {
@@ -62,14 +68,6 @@ operatorBtn.forEach(button => {
    });
 });
 
-function handleOperator(op) {
-   operator = op
-   previousNumber += currentNumber
-   topDisplay.textContent = `${previousNumber} ${operator} `
-   currentNumber = ''
-   currentDisplay.textContent = ''
-}
-
 function operate() {
    previousNumber = Number(previousNumber); // Convert value to number
    currentNumber = Number(currentNumber); //Convert value to number 
@@ -79,7 +77,7 @@ function operate() {
    const subtract = (a, b) => a - b
    const multiply = (a, b) => a * b
    const divide = (a, b) => a / b
-
+   
    if (operator === '+') {
       previousNumber = add(currentNumber, previousNumber)
    } else if (operator === '-') {
@@ -111,5 +109,19 @@ function alterResult() {
       currentDisplay.textContent = `${previousNumber.slice(0, 11)}...`
    }
 }
+
+function handleOperator(op) {
+   operator = op
+   previousNumber += currentNumber
+   topDisplay.textContent = `${previousNumber} ${operator} `
+   currentNumber = ''
+   currentDisplay.textContent = ''
+}
+
+function convertMultiply(keyOp) {
+   if (keyOp === '*') return 'x'
+}
+
+
 
 
