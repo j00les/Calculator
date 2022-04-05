@@ -27,7 +27,7 @@ window.addEventListener('keydown', (e) => {
       }
    }
    if (e.key === 'Backspace') handleDeleteKey()
-})
+});
 
 
 function handleDeleteKey() {
