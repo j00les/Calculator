@@ -1,3 +1,4 @@
+// currentDisplay.textContent = currentDisplay.textContent.slice(0, -1)
 let currentNumber = '';
 let previousNumber = '';
 let operator = '';
@@ -29,9 +30,22 @@ window.addEventListener('keydown', (e) => {
    if (e.key === 'Backspace') handleDeleteKey()
 });
 
+function convertMultiply(keyOp) {
+   if (keyOp === '*') return 'x'
+}
 
 function handleDeleteKey() {
-   currentDisplay.textContent = currentDisplay.textContent.slice(0, -1)
+   if (currentNumber !== '') {
+      currentNumber = currentNumber.slice(0, -1)
+      currentDisplay.textContent = currentNumber;
+      if (currentNumber === '') {
+         currentDisplay.textContent = '0'
+      }
+   }
+   if (currentNumber === '' && previousNumber !== '' && operator === '') {
+      previousNumber = previousNumber.slice(0, -1)
+      currentDisplayNumber.textcontent = previousNum;
+   }
 }
 
 equalBtn.addEventListener('click', () => {
@@ -45,8 +59,9 @@ equalBtn.addEventListener('click', () => {
 clearBtn.addEventListener('click', () => {
    currentNumber = ''
    previousNumber = ''
+   operator = ''
+   currentDisplay.textContent = '0'
    topDisplay.textContent = ''
-   currentDisplay.textContent = ''
 })
 
 numberBtn.forEach(button => {
@@ -111,15 +126,30 @@ function alterResult() {
 }
 
 function handleOperator(op) {
-   operator = op
-   previousNumber += currentNumber
-   topDisplay.textContent = `${previousNumber} ${operator} `
-   currentNumber = ''
-   currentDisplay.textContent = ''
+   if (previousNumber === '') {
+      previousNumber = currentNumber 
+      operatorCheck(op)
+   } else if (currentNumber === '') {
+      operatorCheck(op)
+   }else {
+      operate();
+      operator = op;
+      currentDisplay.textContent = '0';
+      topDisplay.textContent = `${previousNum} ${operator}`
+   }
+
+   // operator = op
+   // previousNumber += currentNumber
+   // topDisplay.textContent = `${previousNumber} ${operator} `
+   // currentNumber = ''
+   // currentDisplay.textContent = ''
 }
 
-function convertMultiply(keyOp) {
-   if (keyOp === '*') return 'x'
+function operatorCheck(text) {
+   operator = text;
+   topDisplay.textContent = `${previousNumber} ${operator} `;
+   currentDisplay.textContent = '0';
+   currentNumber = ''
 }
 
 
